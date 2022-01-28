@@ -43,8 +43,14 @@ export default function App() {
       <button className="bg-purple-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button" onClick={calculateBMI}>
         Calculate BMI
       </button>
-      <p> {status} </p>
-    </div>
+
+      </div>
+        {bmiResult &&
+        <div>
+          <p>Your BMI is: {bmiResult} </p>
+          <p>You are currently: {status} </p>
+        </div>
+        }
   </form>
 </div>
   );
