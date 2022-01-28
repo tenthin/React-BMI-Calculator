@@ -13,9 +13,17 @@ export default function App() {
     let bmi = Number(weight / (height/100) ** 2).toFixed(2);
     setBmiResult(bmi);
 
-    console.log({bmi})
+    let bmiStatus = getStatus(bmi)
+    setStatus(bmiStatus)
+
   }
 
+  function getStatus(bmi) {
+    if(bmi < 18.5) return "underweight";
+    else if(bmi >= 18.5 && bmi <24.9) return "Normal";
+    else if(bmi >= 25 && bmi < 29.9) return "Overweight"; 
+    else return "Obese"
+  }
   return (
     <div className="w-full max-w-xs m-10">
   <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
@@ -35,6 +43,7 @@ export default function App() {
       <button className="bg-purple-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button" onClick={calculateBMI}>
         Calculate BMI
       </button>
+      <p> {status} </p>
     </div>
   </form>
 </div>
